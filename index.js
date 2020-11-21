@@ -82,8 +82,8 @@ KLine.prototype.processSeriesData= function(data){
     maxMinData.push(_.minBy(this.kData, function(o) { return o[i]; })[i]);
   }
   
-  this.maxValue = Big(_.max(maxMinData));
-  this.minValue = Big(_.min(maxMinData));
+  this.maxValue = Big(_.max(maxMinData)).add(100);
+  this.minValue = Big(_.min(maxMinData)).minus(100);
   this.ratio =  (this.canvas.height - CANVAS_PADDING) / this.maxValue.minus(this.minValue); 
   this.interval = this.maxValue.minus(this.minValue);
   this.ctx.fillStyle = "black";
